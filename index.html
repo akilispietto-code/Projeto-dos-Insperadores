@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Liderança Autocrática</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800&family=Newsreader:wght@400;500&display=swap">
+<style>
+:root{--bg:#eef0f2;--ink:#14181f;--mute:#5b6572;--line:#c9ced5;--red:#d1202f;--card:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12161c;--ink:#eceff3;--mute:#9aa4b2;--line:#2c3440;--card:#1a2029}}
+:root[data-theme="dark"]{--bg:#12161c;--ink:#eceff3;--mute:#9aa4b2;--line:#2c3440;--card:#1a2029}
+*{box-sizing:inherit;margin:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:clamp(17px,2.1vw,22px);line-height:1.5;overflow:hidden}
+.deck{height:100%;position:relative}
+.slide{position:absolute;inset:0;padding:clamp(20px,5vw,72px) clamp(20px,6vw,96px) 84px;display:none;flex-direction:column;justify-content:center;overflow-y:auto}
+.slide.on{display:flex;background:radial-gradient(ellipse at 88% 8%,color-mix(in srgb,var(--red) 26%,transparent),transparent 55%),radial-gradient(ellipse at 5% 100%,color-mix(in srgb,var(--ink) 12%,transparent),transparent 50%)}
+h1,h2,h3{font-family:"Archivo","Helvetica Neue",Arial,sans-serif;line-height:1.05;letter-spacing:-.02em}
+h1{font-size:clamp(44px,10vw,136px);font-weight:800;line-height:.95}
+h2{font-size:clamp(32px,5.5vw,68px);font-weight:800;margin-bottom:.6em;padding-bottom:.3em;border-bottom:4px solid var(--red);width:fit-content}
+h3{font-size:1.05em;font-weight:800;margin-bottom:.3em}
+p{max-width:34em;color:var(--mute)}
+.lead{color:var(--ink);max-width:28em}
+.red{color:var(--red)}
+.grid{display:grid;gap:clamp(12px,2vw,24px);grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.box{background:color-mix(in srgb,var(--card) 78%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-left:5px solid var(--red);border-radius:0 12px 12px 0;padding:18px 20px;box-shadow:0 10px 30px rgba(0,0,0,.14)}
+.box p{font-size:.9em}
+.dots{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;max-width:420px;margin:0 0 28px}
+.dots i{aspect-ratio:1;background:var(--line)}
+.dots i.k{background:var(--red);grid-column:span 3;grid-row:span 3}
+.who{display:grid;gap:12px;max-width:40em}
+.who p{color:var(--ink)}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);background:color-mix(in srgb,var(--card) 80%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);max-width:960px;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.14)}
+.cmp>div{padding:10px 16px;border-top:1px solid var(--line)}
+.cmp .hd{border-top:0;font-family:"Archivo",Arial,sans-serif;font-weight:800;font-size:1.1em}
+.cmp .hd.b{background:var(--red);color:#fff}
+.cmp .hd.l{background:var(--ink);color:var(--bg)}
+.cmp>div:nth-child(odd){border-right:1px solid var(--line)}
+.cmp div:not(.hd){font-size:.88em}
+.nav{position:fixed;left:0;right:0;bottom:0;padding:12px clamp(20px,6vw,96px) calc(12px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:12px;background:var(--bg);border-top:1px solid var(--line)}
+.nav button{font:800 15px "Archivo",Arial,sans-serif;background:var(--ink);color:var(--bg);border:0;padding:10px 18px;cursor:pointer}
+.nav button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.bar{flex:1;height:4px;background:var(--line)}
+.bar b{display:block;height:100%;background:var(--red);width:100%;transform-origin:left;transform:scaleX(0);transition:transform .35s}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes wave{0%,100%{opacity:.35}50%{opacity:1;background:var(--red)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+.slide.on>*:not(.grid){animation:up .7s cubic-bezier(.2,.8,.2,1) both}
+.slide.on>*:nth-child(2){animation-delay:.15s}
+.slide.on>*:nth-child(3){animation-delay:.3s}
+.slide.on .box{animation:up .6s cubic-bezier(.2,.8,.2,1) both}
+.slide.on .box:nth-child(1){animation-delay:.1s}
+.slide.on .box:nth-child(2){animation-delay:.25s}
+.slide.on .box:nth-child(3){animation-delay:.4s}
+.slide.on .box:nth-child(4){animation-delay:.55s}
+.slide.on .box:nth-child(5){animation-delay:.7s}
+.slide.on .who>*{animation:up .6s both}
+.slide.on .who>*:nth-child(2){animation-delay:.2s}
+.slide.on .who>*:nth-child(3){animation-delay:.5s}
+.slide.on .who>*:nth-child(4){animation-delay:.7s}
+.dots i.k{animation:pulse 2.4s ease-in-out infinite}
+.dots i:not(.k){animation:wave 3.2s ease-in-out infinite}
+.dots i:nth-child(3n){animation-delay:.4s}
+.dots i:nth-child(3n+1){animation-delay:.9s}
+.dots i:nth-child(5n){animation-delay:1.6s}
+.cnt{font:500 14px "Archivo",Arial,sans-serif;color:var(--mute);min-width:3.5em;text-align:right}
+.slide>*:not(.bg){position:relative;z-index:1}
+.bg{position:absolute;right:-1%;bottom:8%;width:min(58vw,700px);height:auto;opacity:.24;pointer-events:none;z-index:0}
+.bg *{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.bg .r{fill:var(--red);stroke:none}
+.bg .f{fill:var(--ink);stroke:none}
+.slide.on>svg.bg{animation:float 8s ease-in-out infinite alternate}
+@keyframes float{from{transform:translateY(0) rotate(-1.2deg)}to{transform:translateY(-18px) rotate(1.2deg)}}
+@media (max-width:700px){.bg{width:115vw;right:-25vw;bottom:10%;opacity:.15}}
+.hint{font:500 13px "Archivo",Arial,sans-serif;color:var(--mute)}
+@media (max-width:700px){.hint{display:none}}
+@media (max-width:600px){.cmp{font-size:.9em}.cmp>div{padding:8px 10px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+<section class="slide on">
+  <div class="dots" aria-hidden="true"><i class="k"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <h1>Liderança<br><span class="red">autocrática</span></h1>
+  <p class="lead" style="margin-top:20px">Quando uma pessoa decide, e todos os outros executam.</p>
+  <svg class="bg" viewBox="0 0 800 600" aria-hidden="true"><path class="r" d="M180 430 L215 230 L320 330 L400 190 L480 330 L585 230 L620 430Z"/><rect class="r" x="180" y="450" width="440" height="40"/><circle class="r" cx="215" cy="215" r="16"/><circle class="r" cx="400" cy="172" r="18"/><circle class="r" cx="585" cy="215" r="16"/><path d="M100 540H700M100 575H700" stroke-width="16" stroke-dasharray="1 38"/></svg>
+</section>
+
+<section class="slide">
+  <h2>O que é?</h2>
+  <p class="lead">Estilo de liderança em que o líder concentra todas as decisões. A equipe recebe ordens e não participa das escolhas.</p>
+  <p style="margin-top:14px">O controle é total: o líder define o que fazer, como fazer e quando fazer. Opiniões da equipe têm pouco ou nenhum peso.</p>
+  <svg class="bg" viewBox="0 0 800 600" aria-hidden="true"><circle class="r" cx="400" cy="110" r="48"/><path d="M400 160V240M140 240H660M140 240V340M270 240V340M400 240V340M530 240V340M660 240V340"/><circle cx="140" cy="370" r="28"/><circle cx="270" cy="370" r="28"/><circle cx="400" cy="370" r="28"/><circle cx="530" cy="370" r="28"/><circle cx="660" cy="370" r="28"/><path d="M100 520H700" stroke-width="16" stroke-dasharray="1 38"/></svg>
+</section>
+
+<section class="slide">
+  <h2>Características</h2>
+  <div class="grid">
+    <div class="box"><h3>Decisão centralizada</h3><p>Só o líder decide, sem consultar o grupo.</p></div>
+    <div class="box"><h3>Ordens diretas</h3><p>Comunicação de cima para baixo, sem debate.</p></div>
+    <div class="box"><h3>Controle rígido</h3><p>Acompanha de perto cada tarefa e cobra resultado.</p></div>
+    <div class="box"><h3>Pouca autonomia</h3><p>A equipe segue regras e prazos definidos pelo líder.</p></div>
+    <div class="box"><h3>Poucos elogios</h3><p>Foco na obediência e na meta, não na motivação.</p></div>
+  </div>
+  <svg class="bg" viewBox="0 0 800 600" aria-hidden="true"><rect class="r" x="120" y="70" width="560" height="44" rx="8"/><path d="M200 140V430M180 400L200 432L220 400M320 140V430M300 400L320 432L340 400M440 140V430M420 400L440 432L460 400M560 140V430M540 400L560 432L580 400M660 140V430M640 400L660 432L680 400"/><path d="M120 500H680" stroke-width="16" stroke-dasharray="1 38"/></svg>
+</section>
+
+<section class="slide">
+  <h2>Exemplo de pessoa autocrática</h2>
+  <div class="who">
+    <h3>Steve Jobs (Apple)</h3>
+    <p>Conhecido por tomar as decisões finais sobre produtos e design, por exigir perfeição e por interferir em detalhes. Teve resultados enormes, mas era famoso por ser duro com a equipe.</p>
+    <h3>Henry Ford (Ford)</h3>
+    <p>Controlava de perto a produção e impunha o método da linha de montagem, com pouca abertura para opiniões contrárias.</p>
+  </div>
+  <svg class="bg" viewBox="0 0 800 600" aria-hidden="true"><path class="r" opacity=".4" d="M400 10L170 570H630Z"/><circle class="f" cx="400" cy="330" r="48"/><path class="f" d="M290 540C290 420 510 420 510 540Z"/><rect class="r" x="250" y="540" width="300" height="34" rx="6"/></svg>
+</section>
+
+<section class="slide">
+  <h2>Vantagens</h2>
+  <div class="grid">
+    <div class="box"><h3>Decisões rápidas</h3><p>Sem reuniões longas nem votação.</p></div>
+    <div class="box"><h3>Clareza de papéis</h3><p>Cada um sabe exatamente o que fazer.</p></div>
+    <div class="box"><h3>Útil em crises</h3><p>Funciona quando é preciso agir imediatamente.</p></div>
+    <div class="box"><h3>Bom para equipes novas</h3><p>Dá direção a quem ainda não tem experiência.</p></div>
+    <div class="box"><h3>Padronização</h3><p>Processos seguidos de forma igual por todos.</p></div>
+  </div>
+  <svg class="bg" viewBox="0 0 800 600" aria-hidden="true"><path class="r" d="M450 40L230 330H380L330 560L580 230H430Z"/><circle cx="650" cy="120" r="52"/><path d="M624 120L645 143L678 100"/></svg>
+</section>
+
+<section class="slide">
+  <h2>Desvantagens</h2>
+  <div class="grid">
+    <div class="box"><h3>Equipe desmotivada</h3><p>Sem voz, as pessoas perdem o engajamento.</p></div>
+    <div class="box"><h3>Pouca criatividade</h3><p>Boas ideias da equipe não aparecem.</p></div>
+    <div class="box"><h3>Alta rotatividade</h3><p>Bons profissionais tendem a sair.</p></div>
+    <div class="box"><h3>Dependência do líder</h3><p>Se ele erra ou falta, tudo para.</p></div>
+    <div class="box"><h3>Clima de medo</h3><p>Pessoas escondem erros em vez de resolvê-los.</p></div>
+  </div>
+  <svg class="bg" viewBox="0 0 800 600" aria-hidden="true"><rect x="140" y="140" width="80" height="380"/><rect x="260" y="220" width="80" height="300"/><rect x="380" y="300" width="80" height="220"/><rect x="500" y="380" width="80" height="140"/><rect class="r" x="620" y="450" width="80" height="70"/><path d="M130 70L690 330M640 330H695V275"/></svg>
+</section>
+
+<section class="slide">
+  <h2>Chefe <span class="red">x</span> Líder</h2>
+  <div class="cmp">
+    <div class="hd b">Chefe (autocrático)</div><div class="hd l">Líder</div>
+    <div>Manda</div><div>Inspira</div>
+    <div>Impõe com autoridade do cargo</div><div>Influencia pelo exemplo</div>
+    <div>Decide sozinho</div><div>Ouve a equipe antes de decidir</div>
+    <div>Gera medo</div><div>Gera confiança</div>
+    <div>Aponta culpados</div><div>Busca soluções</div>
+    <div>Foco na tarefa</div><div>Foco nas pessoas e na tarefa</div>
+  </div>
+  <svg class="bg" viewBox="0 0 800 600" aria-hidden="true"><circle class="r" cx="130" cy="300" r="56"/><path d="M210 300H330M304 274L334 300L304 326"/><circle cx="385" cy="220" r="22"/><circle cx="385" cy="300" r="22"/><circle cx="385" cy="380" r="22"/><circle cx="600" cy="300" r="130" stroke-dasharray="4 12"/><circle class="f" cx="600" cy="300" r="46"/><circle cx="730" cy="300" r="22"/><circle cx="665" cy="413" r="22"/><circle cx="535" cy="413" r="22"/><circle cx="470" cy="300" r="22"/><circle cx="535" cy="187" r="22"/><circle cx="665" cy="187" r="22"/></svg>
+</section>
+
+</div>
+
+<div class="nav">
+  <button id="prev" aria-label="Slide anterior">Anterior</button>
+  <button id="next" aria-label="Próximo slide">Próximo</button>
+  <div class="bar"><b id="bar"></b></div>
+  <div class="hint">use as setas ← →</div>
+  <div class="cnt" id="cnt"></div>
+</div>
+
+<script>
+(function(){
+  var s=[].slice.call(document.querySelectorAll('.slide')),i=0;
+  function go(n){
+    i=Math.max(0,Math.min(s.length-1,n));
+    s.forEach(function(e,k){e.classList.toggle('on',k===i)});
+    document.getElementById('cnt').textContent=(i+1)+' / '+s.length;
+    s[i].scrollTop=0;
+    bar.style.transform='scaleX('+((i+1)/s.length)+')';
+  }
+  var bar=document.getElementById('bar');
+  document.getElementById('prev').onclick=function(){go(i-1)};
+  document.getElementById('next').onclick=function(){go(i+1)};
+  function key(e){
+    var k=e.key;
+    if(k==='ArrowRight'||k==='ArrowDown'||k==='PageDown'||k===' '){e.preventDefault();go(i+1)}
+    else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'){e.preventDefault();go(i-1)}
+    else if(k==='Home'){e.preventDefault();go(0)}
+    else if(k==='End'){e.preventDefault();go(s.length-1)}
+  }
+  window.addEventListener('keydown',key);
+  document.body.tabIndex=-1;document.body.style.outline='none';
+  window.focus();document.body.focus();
+  document.addEventListener('click',function(){window.focus()});
+  var x0=null;
+  document.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(x0===null)return;var d=e.changedTouches[0].clientX-x0;
+    if(Math.abs(d)>60)go(i+(d<0?1:-1));x0=null;
+  });
+  go(0);
+})();
+</script>
+</body>
+</html>
