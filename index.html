@@ -13,7 +13,7 @@
 html,body{height:100%}
 body{background:var(--bg);color:var(--ink);font-family:"Newsreader",Georgia,serif;font-size:clamp(17px,2.1vw,22px);line-height:1.5;overflow:hidden}
 .deck{height:100%;position:relative}
-.slide{position:absolute;inset:0;padding:clamp(20px,5vw,72px) clamp(20px,6vw,96px) 84px;display:none;flex-direction:column;justify-content:center;overflow-y:auto}
+.slide{position:absolute;inset:0;padding:clamp(20px,5vw,72px) clamp(20px,6vw,96px);display:none;flex-direction:column;justify-content:center;overflow-y:auto}
 .slide.on{display:flex;background:radial-gradient(ellipse at 88% 8%,color-mix(in srgb,var(--red) 26%,transparent),transparent 55%),radial-gradient(ellipse at 5% 100%,color-mix(in srgb,var(--ink) 12%,transparent),transparent 50%)}
 h1,h2,h3{font-family:"Archivo","Helvetica Neue",Arial,sans-serif;line-height:1.05;letter-spacing:-.02em}
 h1{font-size:clamp(44px,10vw,136px);font-weight:800;line-height:.95}
@@ -37,11 +37,7 @@ p{max-width:34em;color:var(--mute)}
 .cmp .hd.l{background:var(--ink);color:var(--bg)}
 .cmp>div:nth-child(odd){border-right:1px solid var(--line)}
 .cmp div:not(.hd){font-size:.88em}
-.nav{position:fixed;left:0;right:0;bottom:0;padding:12px clamp(20px,6vw,96px) calc(12px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:12px;background:var(--bg);border-top:1px solid var(--line)}
-.nav button{font:800 15px "Archivo",Arial,sans-serif;background:var(--ink);color:var(--bg);border:0;padding:10px 18px;cursor:pointer}
-.nav button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
-.bar{flex:1;height:4px;background:var(--line)}
-.bar b{display:block;height:100%;background:var(--red);width:100%;transform-origin:left;transform:scaleX(0);transition:transform .35s}
+
 @keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 @keyframes wave{0%,100%{opacity:.35}50%{opacity:1;background:var(--red)}}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
@@ -63,7 +59,7 @@ p{max-width:34em;color:var(--mute)}
 .dots i:nth-child(3n){animation-delay:.4s}
 .dots i:nth-child(3n+1){animation-delay:.9s}
 .dots i:nth-child(5n){animation-delay:1.6s}
-.cnt{font:500 14px "Archivo",Arial,sans-serif;color:var(--mute);min-width:3.5em;text-align:right}
+
 .slide>*:not(.bg){position:relative;z-index:1}
 .bg{position:absolute;right:-1%;bottom:8%;width:min(58vw,700px);height:auto;opacity:.24;pointer-events:none;z-index:0}
 .bg *{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
@@ -89,37 +85,47 @@ p{max-width:34em;color:var(--mute)}
 </section>
 
 <section class="slide">
-  <h2>O que é?</h2>
-  <p class="lead">Estilo de liderança em que o líder concentra todas as decisões. A equipe recebe ordens e não participa das escolhas.</p>
-  <p style="margin-top:14px">O controle é total: o líder define o que fazer, como fazer e quando fazer. Opiniões da equipe têm pouco ou nenhum peso.</p>
+  <h2>O que é ser um líder?</h2>
+  <p class="lead">Um líder é alguém que influencia pessoas a alcançar um objetivo em comum, usando confiança, exemplo e comunicação.</p>
+  <p style="margin-top:14px">Ser líder não depende de cargo. Qualquer pessoa pode liderar quando conquista o respeito e a confiança do grupo. Um bom líder escuta, motiva e desenvolve quem está ao seu redor.</p>
+  <svg class="bg" viewBox="0 0 800 600" aria-hidden="true">
+    <circle class="f" cx="400" cy="210" r="52"/>
+    <path class="f" d="M290 420C290 300 510 300 510 420Z"/>
+    <circle cx="170" cy="320" r="28"/><path class="f" d="M128 420C128 356 212 356 212 420Z" opacity=".5"/>
+    <circle cx="630" cy="320" r="28"/><path class="f" d="M588 420C588 356 672 356 672 420Z" opacity=".5"/>
+    <circle cx="240" cy="440" r="22"/><circle cx="340" cy="480" r="22"/><circle cx="460" cy="480" r="22"/><circle cx="560" cy="440" r="22"/>
+    <path d="M400 265V295M305 245L280 225M495 245L520 225M400 160V130" stroke-width="4" stroke-dasharray="6 6"/>
+    <circle class="r" cx="400" cy="120" r="18"/>
+    <circle class="r" cx="270" cy="210" r="14"/>
+    <circle class="r" cx="530" cy="210" r="14"/>
+  </svg>
+</section>
+
+<section class="slide">
+  <h2>O que é um líder autocrático?</h2>
+  <p class="lead">É aquele que centraliza todas as decisões em si mesmo. A equipe executa, mas não participa das escolhas.</p>
+  <div class="grid" style="margin-top:20px">
+    <div class="box"><h3>Decisão centralizada</h3><p>Só o líder decide, sem ouvir o grupo.</p></div>
+    <div class="box"><h3>Controle rígido</h3><p>Acompanha de perto cada tarefa e cobra resultado.</p></div>
+    <div class="box"><h3>Comunicação vertical</h3><p>As ordens vêm de cima, sem espaço para debate.</p></div>
+    <div class="box"><h3>Pouca autonomia</h3><p>A equipe segue regras e prazos definidos pelo líder.</p></div>
+  </div>
   <svg class="bg" viewBox="0 0 800 600" aria-hidden="true"><circle class="r" cx="400" cy="110" r="48"/><path d="M400 160V240M140 240H660M140 240V340M270 240V340M400 240V340M530 240V340M660 240V340"/><circle cx="140" cy="370" r="28"/><circle cx="270" cy="370" r="28"/><circle cx="400" cy="370" r="28"/><circle cx="530" cy="370" r="28"/><circle cx="660" cy="370" r="28"/><path d="M100 520H700" stroke-width="16" stroke-dasharray="1 38"/></svg>
 </section>
 
 <section class="slide">
-  <h2>Características</h2>
-  <div class="grid">
-    <div class="box"><h3>Decisão centralizada</h3><p>Só o líder decide, sem consultar o grupo.</p></div>
-    <div class="box"><h3>Ordens diretas</h3><p>Comunicação de cima para baixo, sem debate.</p></div>
-    <div class="box"><h3>Controle rígido</h3><p>Acompanha de perto cada tarefa e cobra resultado.</p></div>
-    <div class="box"><h3>Pouca autonomia</h3><p>A equipe segue regras e prazos definidos pelo líder.</p></div>
-    <div class="box"><h3>Poucos elogios</h3><p>Foco na obediência e na meta, não na motivação.</p></div>
-  </div>
-  <svg class="bg" viewBox="0 0 800 600" aria-hidden="true"><rect class="r" x="120" y="70" width="560" height="44" rx="8"/><path d="M200 140V430M180 400L200 432L220 400M320 140V430M300 400L320 432L340 400M440 140V430M420 400L440 432L460 400M560 140V430M540 400L560 432L580 400M660 140V430M640 400L660 432L680 400"/><path d="M120 500H680" stroke-width="16" stroke-dasharray="1 38"/></svg>
-</section>
-
-<section class="slide">
-  <h2>Exemplo de pessoa autocrática</h2>
+  <h2>Exemplo de líder autocrático</h2>
   <div class="who">
     <h3>Steve Jobs (Apple)</h3>
-    <p>Conhecido por tomar as decisões finais sobre produtos e design, por exigir perfeição e por interferir em detalhes. Teve resultados enormes, mas era famoso por ser duro com a equipe.</p>
+    <p>Tomava todas as decisões sobre produtos e design, exigia perfeição e interferia em cada detalhe. Gerou resultados imensos, mas era conhecido por ser extremamente duro com a equipe.</p>
     <h3>Henry Ford (Ford)</h3>
-    <p>Controlava de perto a produção e impunha o método da linha de montagem, com pouca abertura para opiniões contrárias.</p>
+    <p>Controlava pessoalmente a produção e impôs o método da linha de montagem, com pouca ou nenhuma abertura para opiniões contrárias dos funcionários.</p>
   </div>
-  <svg class="bg" viewBox="0 0 800 600" aria-hidden="true"><path class="r" opacity=".4" d="M400 10L170 570H630Z"/><circle class="f" cx="400" cy="330" r="48"/><path class="f" d="M290 540C290 420 510 420 510 540Z"/><rect class="r" x="250" y="540" width="300" height="34" rx="6"/></svg>
+  <svg class="bg" viewBox="0 0 800 600" aria-hidden="true"><path class="r" opacity=".4" d="M400 10L170 570H630Z"/><circle class="f" cx="400" cy="310" r="52"/><path class="f" d="M285 530C285 400 515 400 515 530Z"/><rect class="r" x="245" y="536" width="310" height="36" rx="7"/></svg>
 </section>
 
 <section class="slide">
-  <h2>Vantagens</h2>
+  <h2>Vantagens de ser um líder autocrático</h2>
   <div class="grid">
     <div class="box"><h3>Decisões rápidas</h3><p>Sem reuniões longas nem votação.</p></div>
     <div class="box"><h3>Clareza de papéis</h3><p>Cada um sabe exatamente o que fazer.</p></div>
@@ -131,7 +137,7 @@ p{max-width:34em;color:var(--mute)}
 </section>
 
 <section class="slide">
-  <h2>Desvantagens</h2>
+  <h2>Desvantagens de ser um líder autocrático</h2>
   <div class="grid">
     <div class="box"><h3>Equipe desmotivada</h3><p>Sem voz, as pessoas perdem o engajamento.</p></div>
     <div class="box"><h3>Pouca criatividade</h3><p>Boas ideias da equipe não aparecem.</p></div>
@@ -156,15 +162,22 @@ p{max-width:34em;color:var(--mute)}
   <svg class="bg" viewBox="0 0 800 600" aria-hidden="true"><circle class="r" cx="130" cy="300" r="56"/><path d="M210 300H330M304 274L334 300L304 326"/><circle cx="385" cy="220" r="22"/><circle cx="385" cy="300" r="22"/><circle cx="385" cy="380" r="22"/><circle cx="600" cy="300" r="130" stroke-dasharray="4 12"/><circle class="f" cx="600" cy="300" r="46"/><circle cx="730" cy="300" r="22"/><circle cx="665" cy="413" r="22"/><circle cx="535" cy="413" r="22"/><circle cx="470" cy="300" r="22"/><circle cx="535" cy="187" r="22"/><circle cx="665" cy="187" r="22"/></svg>
 </section>
 
+<section class="slide">
+  <h2>Conclusão</h2>
+  <p class="lead" style="max-width:32em">A liderança autocrática tem seu valor — especialmente em situações de crise e ambientes que exigem precisão. Porém, quando usada em excesso, sufoca a criatividade e desmotiva as pessoas.</p>
+  <p style="margin-top:16px">O grande desafio de qualquer líder é saber <strong>quando centralizar e quando ouvir</strong>. O melhor líder não é o que manda mais, mas o que faz a equipe querer ir além.</p>
+  <p style="margin-top:24px;font-family:'Archivo',Arial,sans-serif;font-weight:800;font-size:1.1em;color:var(--red)">Liderar é servir — não dominar.</p>
+  <svg class="bg" viewBox="0 0 800 600" aria-hidden="true">
+    <circle cx="400" cy="280" r="170" stroke-dasharray="6 14" stroke-width="3"/>
+    <circle class="r" cx="400" cy="280" r="90"/>
+    <path d="M340 280L380 320L460 240" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M220 100L240 130M580 100L560 130M180 280H140M660 280H700M240 460L220 490M560 460L580 490" stroke-width="4" stroke-dasharray="1 0"/>
+  </svg>
+</section>
+
 </div>
 
-<div class="nav">
-  <button id="prev" aria-label="Slide anterior">Anterior</button>
-  <button id="next" aria-label="Próximo slide">Próximo</button>
-  <div class="bar"><b id="bar"></b></div>
-  <div class="hint">use as setas ← →</div>
-  <div class="cnt" id="cnt"></div>
-</div>
+
 
 <script>
 (function(){
@@ -172,13 +185,8 @@ p{max-width:34em;color:var(--mute)}
   function go(n){
     i=Math.max(0,Math.min(s.length-1,n));
     s.forEach(function(e,k){e.classList.toggle('on',k===i)});
-    document.getElementById('cnt').textContent=(i+1)+' / '+s.length;
     s[i].scrollTop=0;
-    bar.style.transform='scaleX('+((i+1)/s.length)+')';
   }
-  var bar=document.getElementById('bar');
-  document.getElementById('prev').onclick=function(){go(i-1)};
-  document.getElementById('next').onclick=function(){go(i+1)};
   function key(e){
     var k=e.key;
     if(k==='ArrowRight'||k==='ArrowDown'||k==='PageDown'||k===' '){e.preventDefault();go(i+1)}
